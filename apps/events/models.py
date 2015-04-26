@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.conf import settings
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Event(TimeStampModel):
 	is_free = models.BooleanField(default=True)
 	amount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 	views = models.PositiveIntegerField(default=0)
-	organizer = models.ForeignKey(User) #falta algo
+	organizer = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 	def save(self, *args, **kwargs):
 		if not self.id:
@@ -47,7 +48,7 @@ class Event(TimeStampModel):
 		return self.name
 
 class Assistant(TimeStampModel):
-	assistant = models.ForeignKey(User) #falta algo
+	assistant = models.ForeignKey(settings.AUTH_USER_MODEL)
 	event = models.ManyToManyField(Event)
 	attended = models.BooleanField(default=False)
 	has_paid = models.BooleanField(default=False)
@@ -57,7 +58,7 @@ class Assistant(TimeStampModel):
 
 
 class Comments(TimeStampModel):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 	event = models.ForeignKey(Event)
 	content = models.TextField()
 
