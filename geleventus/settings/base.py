@@ -28,6 +28,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
         'apps.events',
+        'apps.users',
     )
 
 THIRD_PARTY_APPS = (
