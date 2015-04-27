@@ -1,6 +1,6 @@
 from .base import *
 
-#SECRET_KEY = 'evb)7j!hyit7+9qx8cy^t)8b4p81l2gj88+wmw6cbk2f@ma*_e'
+SECRET_KEY = 'evb)7j!hyit7+9qx8cy^t)8b4p81l2gj88+wmw6cbk2f@ma*_e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
