@@ -9,11 +9,9 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^', include('apps.events.urls')),
     url(r'^admin/', include(admin.site.urls)),
-     (r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
 ] 
 
-if settings.DEBUG:
+if not settings.DEBUG:
 	urlpatterns += patterns("",
 		url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
 			{'document_root': settings.MEDIA_ROOT,}
