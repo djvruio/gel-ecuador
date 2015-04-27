@@ -23,6 +23,18 @@ class Category(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class KnowledgeArea(models.Model):
+	"""Area de conocimiento"""
+	name = models.CharField(max_length=50)
+
+	def save(self, *args, **kwargs):
+		if not self.id:
+			self.slug = slugify(self.name)
+		super(KnowledgeArea, self).save(*args, **kwargs)
+		
+	def __unicode__(self):
+		return self.name
+
 
 class Event(TimeStampModel):
 	name = models.CharField(max_length=200, unique=True)
@@ -65,3 +77,23 @@ class Comments(TimeStampModel):
 	def __unicode__(self):
 		return "%s %s" % (self.user.username, self.event.name)
 
+
+class Sponsor(models.Model):
+	name = models.CharField(max_length=100)
+	logo = models.ImageField(upload_to = 'sponsors')
+
+	def __unicode__(self):
+		return self.name
+
+class Tema(TimeStampModel):
+	titulo = models.CharField(max_length=50, unique=True)
+	facilitador = models.CharField(max_length=50)
+	institucion = models.CharField(max_length=50)
+	objetivo = models.TextField(max_length=300)
+	knowledgearea = models.ForeignKey(KnowledgeArea)
+	req_tecnico = models.CharField(max_length=200)
+	req_logistico = models.CharField(max_length=200)
+	propuesto_por = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
+
+	def __unicode__(self):
+		return self.titulo

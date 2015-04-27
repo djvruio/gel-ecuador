@@ -1,0 +1,149 @@
+{% extends "events/base_events.html" %}
+
+{% block title %}GEL Home{% endblock title %}
+
+{% block content %}
+
+<div class="masthead">
+    <h1 class="masthead-title"><a href="/">GEL Ecuador</a></h1>
+    <p class="masthead-lead">Bienvenidos al Grupo Ecuatoriano de Liquenología.</p>
+
+    <hr class="masthead-hr">
+
+    <ul class="masthead-nav">
+      <li class="nav-item"><a class="nav-link nav-link-active" href="/">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="/about/">Acerca de Nosotros</a></li>
+      <li class="nav-item"><a class="nav-link" href="/resources/">Contáctanos</a></li>
+       <li class="nav-item"><a class="nav-link" href="/resources/">Recursos</a></li>
+    </ul>
+
+    <hr class="masthead-hr">
+    <p class="masthead-lead">Nuestros auspiciantes:</p>
+    {% for sponsor in sponsors %}  	
+    <div id="carbonads-container">
+    	<div class="carbonad">
+    		<div id="azcarbon">
+    			<a class="entry-thumb" href="#" title="Visit Egelnick + Webb" target="_blank">
+        			<p><img src="{{ sponsor.logo.url }}" /></p>
+        			<span class="icon icon-forward entry-icon"></span>
+    			</a>
+    		</div>
+    	</div>
+    </div>
+    {% endfor %}
+
+     <hr class="masthead-hr">
+
+    <div id="carbonads-container">
+    	<div class="carbonad">
+    		<div id="azcarbon">
+    			Quito - Ecuador / 2015
+    		</div>
+    	</div>
+    </div>
+
+    <hr class="masthead-hr visible-xs">
+
+</div>
+	<div class="row">
+   		<div class="collapse navbar-collapse">
+
+			<ul class="nav navbar-nav pull-right">
+
+				<li><a class="masthead-lead" href="#">Sign Up</a></li>
+
+				<li><a class="masthead-lead" href="#about">Login</a></li>
+
+			</ul>
+
+		</div><!--/.nav-collapse -->
+   	</div>
+   	<div class="row">
+   		<div class="listing">
+
+	<div class="entry">
+	<div class="entry-content">
+		<h1  style="color:#563D7C" >XII Encuentro del Grupo Latinoamericano de Liquenólogos</h1>
+	</div>
+		<p class="masthead-lead">Bienvenido al Congreso, aquí podrás encontrar los talleres, seminarios y otros eventos que se darán en Quito, inscríbete on-line con un solo click. ¡ <a class="btn btn-lg btn-success" role="button"> Registrate </a> y asiste a este congreso!</p>
+	</div>
+
+</div>
+   	</div>
+<div class="listing">
+   
+	{% for event  in events %}
+    <div class="entry">
+    	<div class="entry-content">
+        	<h2 class="entry-title">
+          	<a href="#">{{ event.name }}</a>
+        	</h2>
+        	<p class="entry-date">Inicio: {{ event.start }} - Fin: {{ event.finish }}</p>
+    	</div>
+    	<a class="entry-thumb" href="#" title="Visit Egelnick + Webb" target="_blank">
+        	<p><img src="{{ event.image.url }}" /></p>
+        	<span class="icon icon-forward entry-icon"></span>
+    	</a>
+      
+    </div>
+	{% endfor %}
+
+
+    <h3 class="related-title">Temas propuestos:</h3>
+    <div class="row">
+        {% for tema in temas %}    
+        <div class="col-sm-4">
+            <div class="entry">
+                <div class="entry-content">
+                    <h4 class="entry-title">{{ tema.titulo }}</h4>
+                    <p class="entry-date">{{ tema.objetivo }}</p>
+                </div>
+            </div>  
+        </div>
+        {% endfor %}
+    </div>
+
+     <h3 class="related-title">Expositores Invitados</h3>
+    <div class="row">
+    	<div class="col-sm-4">
+    		<div class="entry">
+    			Foto Expositor 1
+    		</div>	
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="entry">
+    			Foto Expositor 2
+    		</div>	
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="entry">
+    			Foto Expositor 3
+    		</div>	
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="entry">
+    			Aqui evento 3
+    		</div>	
+    	</div>
+    	<div class="col-sm-4">
+    		<div class="entry">
+    			Aqui evento 3
+    		</div>	
+    	</div>
+    </div>
+
+
+
+
+    <div class="paginator">
+
+      <a href="/page2" class="paginate older">Older</a>
+
+
+
+      <span class="paginate previous">Newer</span>
+
+    </div>
+  </div>
+
+{% endblock content %}
